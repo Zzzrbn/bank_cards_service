@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.example.bankcardsservice.util.CardStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,15 +12,15 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Data
 @Entity
 @Table(name = "bankcards")
@@ -33,8 +34,9 @@ public class Bankcard {
 	@Column(name = "number", nullable = false, unique = true)
 	private String number;
 	
-	@Column(name = "holder")
-	private int holder;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinColumn(name = "user")
+	private User user;
 	
 	@Column(name = "expdate")
 	private Date expdate;
@@ -45,24 +47,4 @@ public class Bankcard {
 	
 	@Column(name = "balance")
 	private double balance;
-
-	
-
-//	public Bankcard(String number, String holder, Date expdate, CardStatus status, double balance) {
-//		super();
-//		
-//		this.number = number;
-//		this.holder = holder;
-//		this.expdate = expdate;
-//		this.status = status;
-//		this.balance = balance;
-//	}
-
-
-
-	
-	
-	
-	
-	
 }

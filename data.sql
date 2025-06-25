@@ -4,7 +4,7 @@ VALUES
     (2, 'Ivanov', '$2y$05$14yPmv7l1noycewcczxfAOAyIoOf2XzqCaxbQAxn1xHfmQIt2qQ92', 'ROLE_USER'),
     (3, 'Petrov', '$2y$05$bap6h.hrKr6/AFlIvu1BW.SCZtt1ynnosYDF9gCscmxWt/drF4GtO', 'ROLE_USER');
     
-REPLACE INTO my_db.bankcards (id, number, holder, expdate, status, balance)
+REPLACE INTO my_db.bankcards (id, number, user_id, expdate, status, balance)
 VALUES
     (1,'1234567890001234', 1, '2025-12-31', 'ACTIVE', 500),
     (2,'1234567890001235', 1, '2025-11-30', 'ACTIVE', 1500),

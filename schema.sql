@@ -4,14 +4,15 @@ CREATE TABLE users (
   password varchar(100),
   role varchar(15),
   PRIMARY KEY (id)
-) ;
+);
 
 CREATE TABLE bankcards (
   id int NOT NULL AUTO_INCREMENT,
   number varchar(16),
-  holder int,
+  user int,
   expdate date,
   status ENUM('ACTIVE', 'BLOCKED', 'EXPIRED'),
   balance int,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (user) REFERENCES users(id)
 );
