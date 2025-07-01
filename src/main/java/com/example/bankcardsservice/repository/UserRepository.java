@@ -7,12 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bankcardsservice.entity.User;
 
-public interface UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
 
-	@Repository
-	public interface UserRepo extends JpaRepository<User, Long> 
-	{
-	    Optional<User> findByName(String username);
-	}
+//	@Repository
+//	public interface UserRepo extends JpaRepository<User, Long> 
+//	{
+		User findByUsername(String username);
+	    //Optional<User> findByName(String username);
+//	}
 	
 }
